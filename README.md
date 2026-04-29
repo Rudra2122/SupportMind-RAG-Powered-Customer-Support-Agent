@@ -36,10 +36,10 @@ User → React Frontend → FastAPI Backend
 
 ## Demo
 
-> Add your screenshot inside `/assets/ui.png`
+> Add your screenshot inside `/assets/image.png`
 
 ```
-![SupportMind UI](./assets/ui.png)
+![SupportMind UI](./assets/image.png)
 ```
 
 ---
