@@ -119,8 +119,8 @@ export default function App() {
               {msg.content}
             </div>
 
-            {/* Source citations — responsible AI transparency */}
-            {/* {msg.sources && msg.sources.length > 0 && (
+            {Source citations — responsible AI transparency }
+            {{msg.sources && msg.sources.length > 0 && (
               <div style={{ marginTop: 8 }}>
                 <p style={{ fontSize: 11, color: "#94a3b8", marginBottom: 4 }}>Sources used:</p>
                 {msg.sources.map((s, j) => (
@@ -137,7 +137,7 @@ export default function App() {
                   </div>
                 ))}
               </div>
-            )} */}
+            )} }
           </div>
         ))}
         {loading && (
