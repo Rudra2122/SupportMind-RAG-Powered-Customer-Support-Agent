@@ -60,7 +60,7 @@ User → React Frontend → FastAPI Backend
 
 ---
 
-## ⚡ Key Features
+## Key Features
 
 - RAG Pipeline using LangChain and ChromaDB for context-aware responses  
 - Sentiment Analysis with structured classification (positive, neutral, frustrated)  
