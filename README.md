@@ -36,7 +36,7 @@ User → React Frontend → FastAPI Backend
 
 ## Demo
 
-![SupportMind UI](./assets/image.png)
+![SupportMind UI](./frontend/image.png)
 
 ---
 
