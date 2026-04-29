@@ -64,13 +64,13 @@ Benchmarked using `wrk -t4 -c10 -d30s` against the `/chat` endpoint on AWS EC2 (
 
 ```
 Running 30s test @ http://localhost:8000/chat
-  4 threads and 10 connections
+4 threads and 10 connections
 
   Thread Stats   Avg      Stdev     Max
     Latency    31.24ms    4.87ms   58.13ms
     Req/Sec    79.18      8.34   101.00
 
-  9,482 requests in 30.05s, 3.21MB read
+9,482 requests in 30.05s, 3.21MB read
 Requests/sec:    315.54
 Transfer/sec:    109.32KB
 ```
