@@ -9,9 +9,9 @@
 
 ---
 
-**SupportMind** is a full-stack, production-style customer support system that combines Retrieval-Augmented Generation (RAG), sentiment analysis, caching, and observability to deliver accurate, low-latency responses at scale.
+**SupportMind** is a production-grade, full-stack customer support system built on Retrieval-Augmented Generation (RAG). It answers user queries by retrieving grounded context from a vector database, performs real-time sentiment analysis, and surfaces source citations with every response, ensuring responsible AI transparency by design.
 
-This project demonstrates real-world system design by integrating LLM inference, vector search, performance optimization, and monitoring into a single scalable architecture.
+The system integrates LLM inference, vector search, caching, and observability to deliver accurate, low-latency responses at scale. Designed to reflect real-world system architecture, it demonstrates end-to-end AI/ML engineering, including fault-tolerant backend design, performance optimization, and live monitoring.
 
 ---
 
