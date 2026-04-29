@@ -17,20 +17,7 @@ This project demonstrates real-world system design by integrating LLM inference,
 
 ## Architecture Overview
 
-```
-User → React Frontend → FastAPI Backend
-                         │
-                         ├── RAG Pipeline (LangChain + ChromaDB)
-                         │       ├── Embeddings
-                         │       ├── Vector Retrieval
-                         │       └── LLM (Ollama)
-                         │
-                         ├── Sentiment Analysis (OpenAI API)
-                         │
-                         ├── LRU Cache (low-latency optimization)
-                         │
-                         └── Prometheus Metrics (/metrics endpoint)
-```
+![SupportMind UI](./frontend/image1.png)
 
 ---
 
