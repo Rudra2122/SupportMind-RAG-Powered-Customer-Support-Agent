@@ -1,50 +1,45 @@
-from langchain_huggingface import HuggingFaceEmbeddings
+from langchain_openai import OpenAIEmbeddings, ChatOpenAI
 from langchain_community.vectorstores import Chroma
-from langchain_community.llms import Ollama
+from langchain.chains import RetrievalQA
+from langchain.prompts import PromptTemplate
+from dotenv import load_dotenv
 
-PROMPT_TEMPLATE = """You are a helpful customer support agent.
+load_dotenv()
+
+PROMPT_TEMPLATE = """You are a helpful customer support agent. 
 Use the following context to answer the customer's question accurately.
 If you don't know the answer from the context, say so honestly.
+Always cite which part of the documentation you used.
 
 Context:
 {context}
 
-Question: {question}
+Customer question: {question}
 
 Answer:"""
 
 def get_rag_chain():
-    embeddings = HuggingFaceEmbeddings(
-        model_name="sentence-transformers/all-MiniLM-L6-v2"
-    )
-
+    embeddings = OpenAIEmbeddings()
     vectorstore = Chroma(
         persist_directory="./chroma_db",
         embedding_function=embeddings
     )
-
-    retriever = vectorstore.as_retriever(search_kwargs={"k": 2})
-
-    # 🔥 Local LLM via Ollama
-    llm = Ollama(model="llama3")   # or "mistral"
-
-    class SimpleRAG:
-        def invoke(self, inputs):
-            question = inputs["query"]
-
-            docs = retriever.invoke(question)
-            context = "\n\n".join([doc.page_content for doc in docs])
-
-            prompt = PROMPT_TEMPLATE.format(
-                context=context,
-                question=question
-            )
-
-            response = llm.invoke(prompt)
-
-            return {
-                "result": response,
-                "source_documents": docs
-            }
-
-    return SimpleRAG(), retriever
+    retriever = vectorstore.as_retriever(
+        search_type="similarity",
+        search_kwargs={"k": 3} 
+    )
+    llm = ChatOpenAI(model="gpt-4o-mini", temperature=0)
+    
+    prompt = PromptTemplate(
+        template=PROMPT_TEMPLATE,
+        input_variables=["context", "question"]
+    )
+    
+    chain = RetrievalQA.from_chain_type(
+        llm=llm,
+        chain_type="stuff",
+        retriever=retriever,
+        return_source_documents=True, 
+        chain_type_kwargs={"prompt": prompt}
+    )
+    return chain, retriever
